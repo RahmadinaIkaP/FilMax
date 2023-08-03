@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "89052285693",
+    "project_id": "movie-app-ff6e3",
+    "storage_bucket": "movie-app-ff6e3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:89052285693:android:2ea3e4cd51cc05b2558c94",
+        "android_client_info": {
+          "package_name": "com.rahmadina.ika.movieapp_kotlin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "89052285693-nkck6iv8dok53c13dslll7grh1jbh3jt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.rahmadina.ika.movieapp_kotlin",
+            "certificate_hash": "84aa2a0a7b208b5c6397ff4425428181c36f27a7"
+          }
+        },
+        {
+          "client_id": "89052285693-hlprip5og9rmj64r3lvhif7o2phcl6c5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDJDD8b40ftQGHE143AYob2t7xMVmgwvY8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "89052285693-hlprip5og9rmj64r3lvhif7o2phcl6c5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

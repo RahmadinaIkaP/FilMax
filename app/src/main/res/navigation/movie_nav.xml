@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/movie_nav"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.rahmadina.ika.movieapp_kotlin.view.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_detailMovieFragment"
+            app:destination="@id/detailMovieFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_detailTvShowFragment"
+            app:destination="@id/detailTvShowFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_searchResultFragment"
+            app:destination="@id/searchResultFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailMovieFragment"
+        android:name="com.rahmadina.ika.movieapp_kotlin.view.DetailMovieFragment"
+        android:label="fragment_detail_movie"
+        tools:layout="@layout/fragment_detail_movie" >
+        <argument
+            android:name="argId"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailTvShowFragment"
+        android:name="com.rahmadina.ika.movieapp_kotlin.view.DetailTvShowFragment"
+        android:label="fragment_detail_tv_show"
+        tools:layout="@layout/fragment_detail_tv_show" >
+        <argument
+            android:name="argId"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchResultFragment"
+        android:name="com.rahmadina.ika.movieapp_kotlin.view.search.SearchResultFragment"
+        android:label="fragment_search_result"
+        tools:layout="@layout/fragment_search_result" >
+        <action
+            android:id="@+id/action_searchResultFragment_to_detailMovieFragment"
+            app:destination="@id/detailMovieFragment" />
+        <action
+            android:id="@+id/action_searchResultFragment_to_detailTvShowFragment"
+            app:destination="@id/detailTvShowFragment" />
+    </fragment>
+</navigation>
