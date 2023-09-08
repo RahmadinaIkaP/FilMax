@@ -1,4 +1,4 @@
 # FilMax
 Made with: 
-\n-firebase auth and firestore
-\n-Tmdb Api
+<br />-firebase auth and firestore
+<br />-Tmdb Api
