@@ -1,4 +1,4 @@
-package com.rahmadina.ika.movieapp_kotlin.view.adapter
+package com.rahmadina.ika.movieapp_kotlin.view.home.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,24 +6,24 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.rahmadina.ika.movieapp_kotlin.data.model.movie.trending.ResultTrendingMovies
+import com.rahmadina.ika.movieapp_kotlin.data.model.movie.ResultPopularMovie
 import com.rahmadina.ika.movieapp_kotlin.databinding.ItemFilmsBinding
 
-class TrendingMovieAdapter( private val onClick : TrendingMoviesInterface) : RecyclerView.Adapter<TrendingMovieAdapter.ViewHolder>() {
+class PopularMovieAdapter( private val onClick : PopularMoviesInterface) : RecyclerView.Adapter<PopularMovieAdapter.ViewHolder>() {
 
     private val limit = 20
 
-    private val differCallback = object : DiffUtil.ItemCallback<ResultTrendingMovies>(){
+    private val differCallback = object : DiffUtil.ItemCallback<ResultPopularMovie>(){
         override fun areItemsTheSame(
-            oldItem: ResultTrendingMovies,
-            newItem: ResultTrendingMovies
+            oldItem: ResultPopularMovie,
+            newItem: ResultPopularMovie
         ): Boolean {
             return oldItem.id == newItem.id
         }
 
         override fun areContentsTheSame(
-            oldItem: ResultTrendingMovies,
-            newItem: ResultTrendingMovies
+            oldItem: ResultPopularMovie,
+            newItem: ResultPopularMovie
         ): Boolean {
             return oldItem == newItem
         }
@@ -34,19 +34,19 @@ class TrendingMovieAdapter( private val onClick : TrendingMoviesInterface) : Rec
 
     inner class ViewHolder(private val binding: ItemFilmsBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(resultTrendingMovies: ResultTrendingMovies){
-            Glide.with(itemView.context)
-                .load("https://image.tmdb.org/t/p/w400${resultTrendingMovies.posterPath}")
-                .into(binding.ivMovie)
+            fun bind(resultPopularMovie: ResultPopularMovie){
+                Glide.with(itemView.context)
+                    .load("https://image.tmdb.org/t/p/w400${resultPopularMovie.posterPath}")
+                    .into(binding.ivMovie)
 
-            itemView.setOnClickListener {
-                onClick.onItemClick(resultTrendingMovies)
+                itemView.setOnClickListener {
+                    onClick.onItemClick(resultPopularMovie)
+                }
             }
-        }
     }
 
-    interface TrendingMoviesInterface {
-        fun onItemClick(resultTrendingMovies: ResultTrendingMovies)
+    interface PopularMoviesInterface {
+        fun onItemClick(resultPopularMovie: ResultPopularMovie)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -67,7 +67,7 @@ class TrendingMovieAdapter( private val onClick : TrendingMoviesInterface) : Rec
         }
     }
 
-    fun setData(data : List<ResultTrendingMovies>){
+    fun setData(data : List<ResultPopularMovie>){
         differ.submitList(data)
     }
 }

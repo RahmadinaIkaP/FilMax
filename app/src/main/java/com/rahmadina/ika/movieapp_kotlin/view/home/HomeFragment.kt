@@ -1,14 +1,11 @@
-package com.rahmadina.ika.movieapp_kotlin.view
+package com.rahmadina.ika.movieapp_kotlin.view.home
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
-import android.widget.SearchView
-import android.widget.TextView
-import androidx.core.widget.doOnTextChanged
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -19,11 +16,11 @@ import com.rahmadina.ika.movieapp_kotlin.data.model.tvshows.ResultPopularTvShows
 import com.rahmadina.ika.movieapp_kotlin.data.network.ApiResponse
 import com.rahmadina.ika.movieapp_kotlin.databinding.FragmentHomeBinding
 import com.rahmadina.ika.movieapp_kotlin.utils.toast
-import com.rahmadina.ika.movieapp_kotlin.view.adapter.PopularMovieAdapter
-import com.rahmadina.ika.movieapp_kotlin.view.adapter.PopularTvShowsAdapter
-import com.rahmadina.ika.movieapp_kotlin.view.adapter.TrendingMovieAdapter
-import com.rahmadina.ika.movieapp_kotlin.view.viewmodel.MovieViewModel
-import com.rahmadina.ika.movieapp_kotlin.view.viewmodel.TvShowsViewModel
+import com.rahmadina.ika.movieapp_kotlin.view.home.adapter.PopularMovieAdapter
+import com.rahmadina.ika.movieapp_kotlin.view.home.adapter.PopularTvShowsAdapter
+import com.rahmadina.ika.movieapp_kotlin.view.home.adapter.TrendingMovieAdapter
+import com.rahmadina.ika.movieapp_kotlin.view.movieandtvshows.viewmodel.MovieViewModel
+import com.rahmadina.ika.movieapp_kotlin.view.movieandtvshows.viewmodel.TvShowsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -55,20 +52,22 @@ class HomeFragment : Fragment(), PopularMovieAdapter.PopularMoviesInterface,
     }
 
     private fun setSearch() {
-        binding.etSearch.setOnEditorActionListener(TextView.OnEditorActionListener { v, actionId, event ->
-            if (actionId == EditorInfo.IME_ACTION_SEARCH){
-                if (binding.etSearch.text.isNullOrEmpty()){
+        binding.etSearch.setOnEditorActionListener { _, actionId, _ ->
+            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                if (binding.etSearch.text.isNullOrEmpty()) {
                     toast("Please type the keyword")
-                }else{
+                } else {
                     val bundle = Bundle()
                     bundle.putString("keyword", binding.etSearch.text.toString())
-                    findNavController().navigate(R.id.action_homeFragment_to_searchResultFragment, bundle)
+                    findNavController().navigate(
+                        R.id.action_homeFragment_to_searchResultFragment,
+                        bundle
+                    )
                 }
             }
             false
-        })
+        }
     }
-
 
     private fun setTrendingMovie() {
         vmMovie.getTrendingMovie()
@@ -160,17 +159,20 @@ class HomeFragment : Fragment(), PopularMovieAdapter.PopularMoviesInterface,
     }
 
     override fun onItemClick(resultPopularMovie: ResultPopularMovie) {
-        val action = HomeFragmentDirections.actionHomeFragmentToDetailMovieFragment(resultPopularMovie.id)
+        val action =
+            HomeFragmentDirections.actionHomeFragmentToDetailMovieFragment(resultPopularMovie.id)
         findNavController().navigate(action)
     }
 
     override fun onItemClick(resultPopularTvShows: ResultPopularTvShows) {
-        val action = HomeFragmentDirections.actionHomeFragmentToDetailTvShowFragment(resultPopularTvShows.id)
+        val action =
+            HomeFragmentDirections.actionHomeFragmentToDetailTvShowFragment(resultPopularTvShows.id)
         findNavController().navigate(action)
     }
 
     override fun onItemClick(resultTrendingMovies: ResultTrendingMovies) {
-        val action = HomeFragmentDirections.actionHomeFragmentToDetailMovieFragment(resultTrendingMovies.id)
+        val action =
+            HomeFragmentDirections.actionHomeFragmentToDetailMovieFragment(resultTrendingMovies.id)
         findNavController().navigate(action)
     }
 }

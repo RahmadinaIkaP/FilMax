@@ -1,4 +1,4 @@
-package com.rahmadina.ika.movieapp_kotlin.view.viewmodel
+package com.rahmadina.ika.movieapp_kotlin.view.movieandtvshows.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

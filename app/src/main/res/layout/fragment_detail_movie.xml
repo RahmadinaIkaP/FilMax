@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/dark_gray"
-    tools:context=".view.DetailMovieFragment">
+    tools:context=".view.movieandtvshows.DetailMovieFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -90,6 +90,37 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <LinearLayout
+                android:id="@+id/btnAddToFav"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/button_bordered_white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="5dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvMovieName">
+
+                <ImageView
+                    android:id="@+id/imgAddFav"
+                    android:layout_width="30dp"
+                    android:layout_height="35dp"
+                    android:src="@drawable/baseline_add_24" />
+
+                <TextView
+                    android:id="@+id/tvAddFav"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="5dp"
+                    android:fontFamily="@font/lato_bold"
+                    android:text="Add to Favorite"
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvGenre"
                 android:layout_width="wrap_content"
@@ -97,7 +128,7 @@
                 android:layout_marginStart="14dp"
                 android:layout_marginTop="16dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvMovieName"
+                app:layout_constraintTop_toBottomOf="@+id/btnAddToFav"
                 tools:itemCount="1"
                 tools:listitem="@layout/item_genre" />
 

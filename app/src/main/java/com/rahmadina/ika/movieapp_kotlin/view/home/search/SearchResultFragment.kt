@@ -1,4 +1,4 @@
-package com.rahmadina.ika.movieapp_kotlin.view.search
+package com.rahmadina.ika.movieapp_kotlin.view.home.search
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -9,15 +9,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.rahmadina.ika.movieapp_kotlin.R
 import com.rahmadina.ika.movieapp_kotlin.data.model.search.ResultSearch
 import com.rahmadina.ika.movieapp_kotlin.data.network.ApiResponse
 import com.rahmadina.ika.movieapp_kotlin.databinding.FragmentSearchResultBinding
 import com.rahmadina.ika.movieapp_kotlin.utils.toast
-import com.rahmadina.ika.movieapp_kotlin.view.HomeFragmentDirections
-import com.rahmadina.ika.movieapp_kotlin.view.adapter.SearchAdapter
-import com.rahmadina.ika.movieapp_kotlin.view.viewmodel.MovieViewModel
+import com.rahmadina.ika.movieapp_kotlin.view.home.adapter.SearchAdapter
+import com.rahmadina.ika.movieapp_kotlin.view.movieandtvshows.viewmodel.MovieViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -88,10 +85,16 @@ class SearchResultFragment : Fragment(), SearchAdapter.SearchResultInterface {
 
     override fun onItemClick(resultSearch: ResultSearch) {
         if (resultSearch.mediaType == "movie"){
-            val action = SearchResultFragmentDirections.actionSearchResultFragmentToDetailMovieFragment(resultSearch.id)
+            val action =
+                SearchResultFragmentDirections.actionSearchResultFragmentToDetailMovieFragment(
+                    resultSearch.id
+                )
             findNavController().navigate(action)
         } else if (resultSearch.mediaType == "tv"){
-            val action = SearchResultFragmentDirections.actionSearchResultFragmentToDetailTvShowFragment(resultSearch.id)
+            val action =
+                SearchResultFragmentDirections.actionSearchResultFragmentToDetailTvShowFragment(
+                    resultSearch.id
+                )
             findNavController().navigate(action)
         }
     }

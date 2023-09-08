@@ -1,4 +1,4 @@
-package com.rahmadina.ika.movieapp_kotlin.view.adapter
+package com.rahmadina.ika.movieapp_kotlin.view.home.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
